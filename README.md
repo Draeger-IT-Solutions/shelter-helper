@@ -1,3 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b0598a3b-3ee5-42a3-b244-34ccfb91ad99/deploy-status)](https://app.netlify.com/sites/shelter-helper/deploys)
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
