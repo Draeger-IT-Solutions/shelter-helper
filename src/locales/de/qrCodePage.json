@@ -1,0 +1,16 @@
+{
+  "title": "Spenden QR-Codes,",
+  "subtitle": "zum verteilen, drucken, instagram'en...",
+  "description": "Teile folgenden QR-Code um Spenden so einfach zu machen, wie das streicheln einer Katze.",
+  "form": {
+    "location": {
+      "label": "Location",
+      "hint": "Damit Ihr wisst woher die Spende kam.",
+      "placeholder": "Location wählen / Ohne Location"
+    },
+    "type": {
+      "label": "Spendengrund",
+      "hint": "Zu welchem Spendentyp der QR-Code führt."
+    }
+  }
+}
