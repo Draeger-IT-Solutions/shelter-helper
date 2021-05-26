@@ -1,0 +1,18 @@
+{
+  "money": {
+    "title": "QR Code for Money donations",
+    "description": "Spread the following QR Code to make money-donations as easy as cuddling a cat."
+  },
+  "object": {
+    "title": "QR Code for Object donations",
+    "description": "Spread the following QR Code to make object-donations as easy as throwing dry bread on the streets."
+  },
+  "support": {
+    "title": "QR Code for Object donations",
+    "description": "Spread the following QR Code to make help with support as easy as taking a walk a walk with a dog."
+  },
+  "wishlist": {
+    "title": "QR Code for Wishlist donations",
+    "description": "Spread the following QR Code to make wishlist donations as easy as giving a yummy salami-lickum."
+  }
+}

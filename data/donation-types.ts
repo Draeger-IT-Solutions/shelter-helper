@@ -3,18 +3,18 @@ import { Donation, DonationType } from '../interfaces/Donation';
 export const allDonationTypes: Donation[] = [
   {
     type: DonationType.MONEY,
-    image: 'img/donation-type_money.jpeg',
+    image: 'img/donation-types/money.jpeg',
   },
   {
     type: DonationType.OBJECT,
-    image: 'img/donation-type_object.jpeg',
+    image: 'img/donation-types/object.jpeg',
   },
   {
     type: DonationType.SUPPORT,
-    image: 'img/donation-type_support.jpeg',
+    image: 'img/donation-types/support.jpeg',
   },
   {
     type: DonationType.WISHLIST,
-    image: 'img/donation-type_wishlist.jpeg',
+    image: 'img/donation-types/wishlist.jpeg',
   },
 ];

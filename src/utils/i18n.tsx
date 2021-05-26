@@ -19,7 +19,7 @@ i18n
     preload: ['de', 'en'],
     fallbackLng: 'de',
     resources,
-    debug: process.env.NODE_ENV !== 'production',
+    debug: false,
     interpolation: {
       escapeValue: false,
     },
