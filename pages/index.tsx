@@ -2,7 +2,7 @@ import { Container, Flex } from '@chakra-ui/react';
 
 import { allDonationTypes } from '../data/donation-types';
 import DonationTypeCard from '../src/components/DonationType/DonationTypeCard';
-import HomeMain from '../src/components/teaser/HomeMain';
+import HomeMain from '../src/components/Teaser/HomeMain';
 
 export default function Home(): JSX.Element {
   return (
