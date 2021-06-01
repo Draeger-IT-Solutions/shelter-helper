@@ -56,6 +56,16 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
         break;
       }
+
+      case 'checkout.session.async_payment_succeeded': {
+        console.log('PAYMENT SUCCEEDED ASYNC');
+        break;
+      }
+
+      case 'checkout.session.async_payment_failed': {
+        console.error('PAYMENT FAILED ASYNC');
+        break;
+      }
     }
 
     return res.send(200);

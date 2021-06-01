@@ -35,12 +35,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   Object.entries(shelter.donationTypes).forEach(([type, isEnabled]) => {
     if (isEnabled) {
       paths.push(`/donate/${type}`);
-
-      if (type === DonationType.MONEY) {
-        shelter.donationLocations.forEach(({ id }) => {
-          paths.push(`/donate/${type}?location=${id}`);
-        });
-      }
     }
   });
 
