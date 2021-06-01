@@ -1,7 +1,7 @@
 import { loadStripe as _loadStripe, Stripe } from '@stripe/stripe-js';
 import type { Stripe as StripeType } from 'stripe';
 
-import { STRIPE_PUBLIC_KEY } from '../../config';
+import { HOST, STRIPE_PUBLIC_KEY } from '../../config';
 import { StripeCheckoutSessionPostBody } from '../types/Stripe';
 
 let stripePromise: Promise<Stripe | null>;
@@ -21,21 +21,18 @@ export async function requestStripeCheckout(
   }
 > {
   try {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_HOST}/api/stripe/checkout_sessions`,
-      {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data || {}),
-      }
-    );
+    const response = await fetch(`${HOST}/api/stripe/checkout_sessions`, {
+      method: 'POST',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      redirect: 'follow',
+      referrerPolicy: 'no-referrer',
+      body: JSON.stringify(data || {}),
+    });
     return await response.json();
   } catch (err) {
     throw new Error(err.message);
