@@ -8,6 +8,7 @@ export type Contact = {
 };
 
 export type Address = {
+  id?: number;
   latitude?: number;
   longitude?: number;
   name?: string;

@@ -1,5 +1,5 @@
-import { DonationType } from '../interfaces/Donation';
-import { Shelter } from '../interfaces/Shelter';
+import { DonationType } from '../src/types/Donation';
+import { Shelter } from '../src/types/Shelter';
 
 export const shelter: Shelter = {
   name: 'Tierheim Berlin',
@@ -13,15 +13,19 @@ export const shelter: Shelter = {
     postalCode: '13057',
     street: 'Hausvaterweg 39',
   },
+  logo: 'img/logos/logo-tierheim-berlin.svg',
   donationTypes: {
     [DonationType.MONEY]: true,
+    [DonationType.MONEY_SUBSCRIPTION]: true,
+    [DonationType.SPONSORING]: true,
     [DonationType.OBJECT]: true,
     [DonationType.SUPPORT]: true,
     [DonationType.WISHLIST]: true,
   },
   donationLocations: [
     {
-      name: 'Kaufland Berlin-Marzahn',
+      id: 0,
+      name: 'Kaufland - Berlin-Marzahn',
       city: 'Berlin',
       contacts: [],
       countryCode: 'de',
@@ -30,6 +34,16 @@ export const shelter: Shelter = {
       postalCode: '12681',
       street: 'Märkische Allee 166 168, 172',
     },
+    {
+      id: 1,
+      name: 'REWE - Marzahner Promenade',
+      city: 'Berlin',
+      contacts: [],
+      countryCode: 'de',
+      latitude: 52.5442163,
+      longitude: 13.5431698,
+      postalCode: '12679',
+      street: 'Marzahner Promenade 1A, 12679 Berlin',
+    },
   ],
-  logo: 'img/logos/logo-tierheim-berlin.svg',
 };

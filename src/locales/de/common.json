@@ -1,8 +1,10 @@
 {
+  "or": "oder",
   "button": {
     "label": {
       "donateNow": "Spenden Sie jetzt",
-      "learnMore": "mehr erfahren"
+      "learnMore": "mehr erfahren",
+      "donate": "€ spenden"
     }
   }
 }

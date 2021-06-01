@@ -1,0 +1,11 @@
+{
+  "stripeCheckout": {
+    "name": "Spende an Tierheim Berlin",
+    "description": "Das Tierheim Berlin und alle Bewohner bedanken sich herzlichst ❤️"
+  },
+  "thankYou": {
+    "title": "🐱 🐭 🐶 🐦",
+    "subtitle": "(und die Pfleger) des Tierheim Berlins.",
+    "description": "Bedanken sich herzlichst für die Spende..."
+  }
+}
