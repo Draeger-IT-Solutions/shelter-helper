@@ -1,0 +1,7 @@
+{
+  "error": {
+    "min": "{{inputName}} muss größer als {{min}} sein.",
+    "max": "{{inputName}} muss kleiner als {{max}} sein.",
+    "required": "{{inputName}} muss ausgefüllt werden."
+  }
+}

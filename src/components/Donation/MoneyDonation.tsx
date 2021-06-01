@@ -53,7 +53,7 @@ export default function MoneyDonation({
           direction={'column'}
           w={'full'}
         >
-          <MoneyDonationForm />
+          <MoneyDonationForm location={location} />
           {location && (
             <Text as={'p'}>
               Ihr QR-Code von

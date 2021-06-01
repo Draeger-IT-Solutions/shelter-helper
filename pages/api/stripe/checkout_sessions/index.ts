@@ -26,13 +26,13 @@ const requestHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { success_url, cancel_url, metadata }: StripeCheckoutSessionPostBody =
     req.body;
 
-  const amount = parseInt(req.body.amount);
+  const amount = parseFloat(req.body.amount);
 
   try {
     // Validate the amount that was passed from the client.
     if (
       isNaN(amount) ||
-      amount <= MIN_DONATION_AMOUNT ||
+      amount < MIN_DONATION_AMOUNT ||
       amount >= MAX_DONATION_AMOUNT
     ) {
       throw new Error(`Invalid amount: ${amount}`);

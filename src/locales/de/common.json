@@ -1,5 +1,6 @@
 {
   "or": "oder",
+  "donationAmount": "Spendensumme",
   "button": {
     "label": {
       "donateNow": "Spenden Sie jetzt",

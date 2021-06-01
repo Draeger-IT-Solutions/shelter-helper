@@ -2,6 +2,9 @@
   "money": {
     "title": "Großes bewirken...",
     "subtitle": "mit einer kleinen Spende.",
-    "description": "Dort wo jeder Euro zählt, ist jede Spende willkommen..."
+    "description": "Dort wo jeder Euro zählt, ist jede Spende willkommen...",
+    "form": {
+      "loading": "...wir bereiten die Spende vor und leiten Sie in wenigen Sekunden zu unserem Bezahlanbieter (Stripe) weiter."
+    }
   }
 }

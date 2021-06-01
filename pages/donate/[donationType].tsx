@@ -14,8 +14,7 @@ export default function DonateWithTypePage({
   type,
 }: DonateWithReasonPageType): JSX.Element {
   const { query } = useRouter();
-  const locationId =
-    process.browser && query.location && parseInt(query.location as string);
+  const locationId = query.location && parseInt(query.location as string);
 
   const location = shelter.donationLocations.find(
     ({ id }) => id === locationId
@@ -33,9 +32,17 @@ export default function DonateWithTypePage({
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths: string[] = [];
 
-  Object.entries(shelter.donationTypes).forEach(
-    ([type, isEnabled]) => isEnabled && paths.push(`/donate/${type}`)
-  );
+  Object.entries(shelter.donationTypes).forEach(([type, isEnabled]) => {
+    if (isEnabled) {
+      paths.push(`/donate/${type}`);
+
+      if (type === DonationType.MONEY) {
+        shelter.donationLocations.forEach(({ id }) => {
+          paths.push(`/donate/${type}?location=${id}`);
+        });
+      }
+    }
+  });
 
   return { paths, fallback: false };
 };

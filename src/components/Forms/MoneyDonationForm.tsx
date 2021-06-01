@@ -1,9 +1,11 @@
 import {
+  Box,
   Button,
   HStack,
   Input,
   InputGroup,
   InputRightElement,
+  Spinner,
   Stack,
   Text,
 } from '@chakra-ui/react';
@@ -11,7 +13,11 @@ import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import { HOST } from '../../../config';
+import {
+  HOST,
+  MAX_DONATION_AMOUNT,
+  MIN_DONATION_AMOUNT,
+} from '../../../config';
 import { loadStripe, requestStripeCheckout } from '../../stripe/helper';
 import { Address } from '../../types/Shelter';
 import { StripeCheckoutSessionPostBody } from '../../types/Stripe';
@@ -33,7 +39,7 @@ export default function MoneyDonationForm({
 
   const [success_url, cancel_url] = [
     `${HOST}/checkout/thank-you?session_id={CHECKOUT_SESSION_ID}`,
-    `${HOST}/donate/money${location?.id ? `?location=${location.id}` : ''}`,
+    `${HOST}/donate/money${location ? `?location=${location?.id}` : ''}`,
   ];
 
   const {
@@ -41,9 +47,33 @@ export default function MoneyDonationForm({
     handleSubmit,
     formState: { errors },
   } = useForm<FormValues>({
-    defaultValues: { amount: DEFAULT_DONATION_AMOUNT },
     mode: 'onChange',
   });
+
+  const amountRegisterOptions = {
+    valueAsNumber: true,
+    min: {
+      value: MIN_DONATION_AMOUNT,
+      message: t('form.error.min', {
+        inputName: t('common.donationAmount'),
+        min: MIN_DONATION_AMOUNT,
+      }),
+    },
+    max: {
+      value: MAX_DONATION_AMOUNT,
+      message: t('form.error.max', {
+        inputName: t('common.donationAmount'),
+        max: MAX_DONATION_AMOUNT,
+      }),
+    },
+    required: {
+      value: true,
+      message: t('form.error.required', {
+        inputName: t('common.donationAmount'),
+      }),
+    },
+  };
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDonation = async (amount: number) => {
@@ -72,13 +102,12 @@ export default function MoneyDonationForm({
 
     // Redirect to Checkout.
     const stripe = await loadStripe();
+
     const { error } = stripe
       ? await stripe.redirectToCheckout({
           sessionId: response.id,
         })
       : { error: { message: 'MÖÖÖÖÖP' } };
-
-    setIsLoading(false);
 
     if (!error) return;
     console.warn(error.message);
@@ -88,7 +117,13 @@ export default function MoneyDonationForm({
     await handleDonation(amount);
   };
 
-  if (isLoading) return <p>...is loading</p>;
+  if (isLoading)
+    return (
+      <Box textAlign={'center'}>
+        <Spinner />
+        <p>{t('donation.money.form.loading')}</p>
+      </Box>
+    );
 
   return (
     <Stack>
@@ -117,13 +152,13 @@ export default function MoneyDonationForm({
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputGroup size="md">
           <Input
-            {...register('amount', { min: 1, max: 10000, required: true })}
+            {...register('amount', amountRegisterOptions)}
+            step={0.01}
             type={'number'}
-            min={1}
-            max={10000}
             required
             textAlign={'center'}
             pr="7rem"
+            defaultValue={DEFAULT_DONATION_AMOUNT}
           />
           <InputRightElement w="7rem">
             <Button
@@ -138,10 +173,11 @@ export default function MoneyDonationForm({
             </Button>
           </InputRightElement>
         </InputGroup>
-        {errors.amount?.type === 'required' && 'Amount is required'}
-        {errors.amount?.type === 'min' &&
-          'Amount must be bigger than or equal to 1'}
-        {errors.amount?.type === 'max' && 'Amount cant be bigger than 10000'}
+
+        {(errors.amount?.type === 'required' ||
+          errors.amount?.type === 'min' ||
+          errors.amount?.type === 'max') &&
+          errors.amount.message}
       </form>
     </Stack>
   );
