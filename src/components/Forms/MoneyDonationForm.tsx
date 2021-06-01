@@ -93,39 +93,21 @@ export default function MoneyDonationForm({
   return (
     <Stack>
       <HStack>
-        <Button
-          variant={'solid'}
-          type="submit"
-          colorScheme="brand"
-          width={'100%'}
-          minH={14}
-          fontSize={'md'}
-          fontWeight={'600'}
-        >
-          {formatAmountForDisplay(1, 'eur')}
-        </Button>
-        <Button
-          variant={'solid'}
-          type="submit"
-          colorScheme="brand"
-          width={'100%'}
-          minH={14}
-          fontSize={'md'}
-          fontWeight={'600'}
-        >
-          {formatAmountForDisplay(2, 'eur')}
-        </Button>
-        <Button
-          variant={'solid'}
-          type="submit"
-          colorScheme="brand"
-          width={'100%'}
-          minH={14}
-          fontSize={'md'}
-          fontWeight={'600'}
-        >
-          {formatAmountForDisplay(5, 'eur')}
-        </Button>
+        {[1, 2, 5].map((amount) => (
+          <Button
+            key={`money-donation-form__donate-btn--${amount}`}
+            variant={'outline'}
+            type="submit"
+            colorScheme="brand"
+            width={'100%'}
+            minH={14}
+            fontSize={'md'}
+            fontWeight={'600'}
+            onClick={() => handleDonation(amount)}
+          >
+            {formatAmountForDisplay(amount, 'eur')}
+          </Button>
+        ))}
       </HStack>
 
       <Text as={'p'} py={4} textAlign={'center'}>
@@ -156,7 +138,7 @@ export default function MoneyDonationForm({
             </Button>
           </InputRightElement>
         </InputGroup>
-        {errors.amount?.type === 'required' && 'Amount name is required'}
+        {errors.amount?.type === 'required' && 'Amount is required'}
         {errors.amount?.type === 'min' &&
           'Amount must be bigger than or equal to 1'}
         {errors.amount?.type === 'max' && 'Amount cant be bigger than 10000'}
