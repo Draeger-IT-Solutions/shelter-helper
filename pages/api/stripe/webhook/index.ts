@@ -5,7 +5,7 @@ import { Stripe } from 'stripe';
 
 import stripeClient from '../../../../src/stripe/client';
 
-const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET_KEY!;
+const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET!;
 
 // Stripe requires the raw body to construct the event.
 export const config = {
@@ -54,16 +54,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (payment_status === 'paid') {
           console.log('PAYMENT PAID');
         }
-        break;
-      }
-
-      case 'checkout.session.async_payment_succeeded': {
-        console.log('PAYMENT SUCCEEDED');
-        break;
-      }
-
-      case 'checkout.session.async_payment_failed': {
-        console.error('PAYMENT FAILED');
         break;
       }
     }
