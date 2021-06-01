@@ -48,11 +48,13 @@ const requestHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       metadata,
       line_items: [
         {
-          name: i18n.t(`checkout.stripeCheckout.name`),
+          name: i18n.t(`checkout.stripeCheckout.name`) || 'Donation',
           amount: formatAmountForStripe(amount),
           currency: CURRENCY,
           quantity: 1,
-          description: i18n.t('checkout.stripeCheckout.description'),
+          description:
+            i18n.t('checkout.stripeCheckout.description') ||
+            `Via QR Code: ${metadata.location_name} - ${metadata.location_name}`,
         },
       ],
       success_url,
