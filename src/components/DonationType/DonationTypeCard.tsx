@@ -8,7 +8,7 @@ import {
 } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
-import { Donation, DonationType } from '../../../interfaces/Donation';
+import { Donation, DonationType } from '../../types/Donation';
 
 export default function DonationTypeCard({ image, type }: Donation) {
   const { t } = useTranslation();
@@ -16,6 +16,7 @@ export default function DonationTypeCard({ image, type }: Donation) {
     <Box
       role={'group'}
       p={6}
+      pt={12}
       maxW={'280px'}
       w={'full'}
       bg={useColorModeValue('white', 'gray.800')}
@@ -61,7 +62,11 @@ export default function DonationTypeCard({ image, type }: Donation) {
           {t(`donationType.${type}.title`)}
         </Text>
 
-        <Link href={`donate/${type}`} variant={'outline'} colorScheme={'green'}>
+        <Link
+          href={`/donate/${type}`}
+          variant={'outline'}
+          colorScheme={'green'}
+        >
           {t(
             `common.button.label.${
               type === DonationType.MONEY ? 'donateNow' : 'learnMore'

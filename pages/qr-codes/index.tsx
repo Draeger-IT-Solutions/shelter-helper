@@ -15,21 +15,19 @@ import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
 import { shelter } from '../../data/shelter';
-import { DonationType } from '../../interfaces/Donation';
+import { DonationType } from '../../src/types/Donation';
 
 type QrCodeForm = {
   type: DonationType;
-  location?: string;
+  location?: number;
 };
 
 export default function QrCodePage(): JSX.Element {
   const { t } = useTranslation();
 
   // @TODO Add correct full url
-  const getQrCodeValue = (type: DonationType, location?: string) =>
-    `${process.env.NEXT_PUBLIC_HOST}/donate/${type}?location=${encodeURI(
-      location || ''
-    )}`;
+  const getQrCodeValue = (type: DonationType, location?: number) =>
+    `${process.env.NEXT_PUBLIC_HOST}/donate/${type}?location=${location}`;
 
   const [qrCodeValue, setQrCodeValue] = useState<string>(
     getQrCodeValue(DonationType.MONEY)
@@ -73,12 +71,6 @@ export default function QrCodePage(): JSX.Element {
             color={'gray.500'}
             dangerouslySetInnerHTML={{ __html: t('qrCodePage.description') }}
           />
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={{ base: 'column', sm: 'row' }}
-          >
-            DONATION TYPES
-          </Stack>
         </Stack>
         <Flex
           flex={1}
@@ -115,9 +107,9 @@ export default function QrCodePage(): JSX.Element {
                     placeholder={t('qrCodePage.form.location.placeholder')}
                     {...register('location')}
                   >
-                    {shelter.donationLocations.map((location) => (
-                      <option key={`select--${location.street}`}>
-                        {location.name} - {location.street}
+                    {shelter.donationLocations.map(({ id, street, name }) => (
+                      <option key={`select--${street}`} value={id}>
+                        {name} - {street}
                       </option>
                     ))}
                   </Select>

@@ -2,27 +2,18 @@ import { extendTheme, ThemeConfig } from '@chakra-ui/react';
 import { createBreakpoints } from '@chakra-ui/theme-tools';
 
 export const breakpoints = createBreakpoints({
-  sm: '576px',
-  md: '768px',
-  lg: '992px',
-  xl: '1200px',
+  sm: '36em',
+  md: '48em',
+  lg: '62em',
+  xl: '75em',
   '2xl': '96em',
 });
 
 export const config: ThemeConfig = {
-  initialColorMode: 'light',
-  useSystemColorMode: false,
+  useSystemColorMode: true,
 };
 
 export const colors = {
-  blockContext: {
-    color: '#463D43',
-  },
-  teaser: {
-    bg: 'rgba(255, 255, 255, .3)',
-    border: 'rgb(53, 84, 165, .06)',
-    talentCategory: '#9E9BB8',
-  },
   brand: {
     '50': '#E7EBFE',
     '100': '#BBC6FC',
@@ -83,10 +74,7 @@ export const textStyles = {
 
 export const styles = {
   global: {
-    body: {
-      backgroundColor: colors.grey['200'],
-      color: colors.purple['800'],
-    },
+    body: {},
     h1: {
       fontSize: '2rem',
       fontWeight: '700',
