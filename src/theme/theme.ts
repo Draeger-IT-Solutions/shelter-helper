@@ -11,6 +11,7 @@ export const breakpoints = createBreakpoints({
 
 export const config: ThemeConfig = {
   useSystemColorMode: true,
+  initialColorMode: 'dark',
 };
 
 export const colors = {
