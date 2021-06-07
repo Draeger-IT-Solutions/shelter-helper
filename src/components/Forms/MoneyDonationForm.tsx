@@ -5,6 +5,7 @@ import {
   Input,
   InputGroup,
   InputRightElement,
+  Spacer,
   Spinner,
   Stack,
   Text,
@@ -126,31 +127,32 @@ export default function MoneyDonationForm({
     );
 
   return (
-    <Stack>
-      <HStack>
+    <Stack direction={{ base: 'column', md: 'row' }} alignItems={'center'}>
+      <HStack w={'100%'} maxW={'320px'}>
         {[1, 2, 5].map((amount) => (
           <Button
             key={`money-donation-form__donate-btn--${amount}`}
             variant={'outline'}
             type="submit"
             colorScheme="brand"
-            width={'100%'}
-            minH={14}
-            fontSize={'md'}
             fontWeight={'600'}
+            fontSize={{ base: 'md', sm: 'xl', lg: '1xl' }}
             onClick={() => handleDonation(amount)}
+            width={'100%'}
           >
             {formatAmountForDisplay(amount, 'eur')}
           </Button>
         ))}
       </HStack>
 
+      <Spacer />
       <Text as={'p'} py={4} textAlign={'center'}>
         {t('common.or')}
       </Text>
+      <Spacer />
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <InputGroup size="md">
+        <InputGroup size="lg">
           <Input
             {...register('amount', amountRegisterOptions)}
             step={0.01}

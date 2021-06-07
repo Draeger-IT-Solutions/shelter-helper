@@ -22,8 +22,6 @@ export default function DonateWithTypePage({
 
   return (
     <Container maxW={'7xl'} pb={40}>
-      DONATION PAGE WITH REASON: {type}
-      for location {location?.name || ''} - {location?.street || ''}
       {type === DonationType.MONEY && <MoneyDonation location={location} />}
     </Container>
   );

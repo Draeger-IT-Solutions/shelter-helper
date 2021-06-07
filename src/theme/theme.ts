@@ -48,10 +48,28 @@ export const components = {
       },
     },
   },
+  Heading: {
+    baseStyle: {
+      fontFamily: "'Oswald', sans-serif",
+      fontSize: '4xl',
+      lineHeight: 1.1,
+    },
+  },
+  Text: {
+    baseStyle: {
+      fontFamily: "'Roboto', sans-serif",
+    },
+  },
+  // Custom Components
+  Card: {
+    baseStyle: {
+      background: 'white',
+    },
+  },
 };
 
 export const fonts = {
-  body: "'Inter', sans-serif",
+  body: "'Roboto', sans-serif",
 };
 
 export const fontWeights = {
@@ -75,21 +93,13 @@ export const textStyles = {
 
 export const styles = {
   global: {
-    body: {},
-    h1: {
-      fontSize: '2rem',
-      fontWeight: '700',
-    },
-    form: {
-      width: '100%',
-    },
     a: {
       color: colors.brand['400'],
     },
   },
 };
 
-const theme = extendTheme({
+export default extendTheme({
   breakpoints,
   colors,
   config,
@@ -100,5 +110,3 @@ const theme = extendTheme({
   styles,
   textStyles,
 });
-
-export default theme;

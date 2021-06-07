@@ -1,6 +1,7 @@
 {
   "or": "oder",
   "donationAmount": "Spendensumme",
+  "viaQrCode":"via QR-Code",
   "button": {
     "label": {
       "donateNow": "Spenden Sie jetzt",

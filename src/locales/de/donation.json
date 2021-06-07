@@ -1,10 +1,11 @@
 {
   "money": {
-    "title": "Großes bewirken...",
-    "subtitle": "mit einer kleinen Spende.",
+    "title": "Großes bewirken",
+    "subtitle": "...mit einer kleinen Spende.",
     "description": "Dort wo jeder Euro zählt, ist jede Spende willkommen...",
     "form": {
       "loading": "...wir bereiten die Spende vor und leiten Sie in wenigen Sekunden zu unserem Bezahlanbieter (Stripe) weiter."
-    }
+    },
+    "feesHint": "Wir möchten Ihnen den Bezahlvorgang so transparent wie möglich machen. Unser Bezahldienstleister bekommt von Ihrer Spende \"leider\" eine Gebühr von (1,4 % + 0,25 €) pro Transaktion. <br />Klicken sie <a href='https://stripe.com/de/pricing' target='_blank' rel='nofollow noopener'>hier</a> weitere informationen"
   }
 }
