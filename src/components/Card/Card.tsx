@@ -1,4 +1,5 @@
 import {
+  As,
   Box,
   BoxProps,
   forwardRef,
@@ -11,10 +12,11 @@ import { PropsWithChildren } from 'react';
 import theme, { colors } from '../../theme/theme';
 
 type CardType = PropsWithChildren<
-  OmitCommonProps<PropsOf<'div'>, keyof BoxProps> & BoxProps
-> & {
-  badgeTitle?: string;
-};
+  OmitCommonProps<PropsOf<'div'>, keyof BoxProps> &
+    BoxProps & { as?: As<any> | undefined } & {
+      badgeTitle?: string;
+    }
+>;
 
 export default forwardRef<BoxProps, 'div'>(
   ({ badgeTitle, ...props }: CardType, ref) => (
@@ -24,7 +26,7 @@ export default forwardRef<BoxProps, 'div'>(
       position={'relative'}
       px="4"
       pb="4"
-      pt="8"
+      pt={badgeTitle ? 8 : 4}
       rounded="2xl"
       shadow="2xl"
       _before={

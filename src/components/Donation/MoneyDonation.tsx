@@ -1,4 +1,4 @@
-import { Heading, Stack, Text } from '@chakra-ui/react';
+import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { useTranslation } from 'react-i18next';
 
 import { Address } from '../../types/Shelter';
@@ -15,7 +15,7 @@ export default function MoneyDonation({
   const { t } = useTranslation();
 
   return (
-    <Stack spacing={{ base: 8, md: 10 }}>
+    <Flex direction={'column'}>
       <Heading
         as={'h1'}
         fontSize={{ base: '4xl', sm: '5xl', lg: '8xl' }}
@@ -35,27 +35,28 @@ export default function MoneyDonation({
       </Heading>
       <Text
         color={'gray.500'}
+        display={'block'}
         dangerouslySetInnerHTML={{
           __html: t('donation.money.description'),
         }}
       />
-      {location && (
-        <Text as={'p'}>
-          Ihr QR-Code von
-          {location?.name} - {location?.street}
-        </Text>
-      )}
 
-      <Card badgeTitle={location && t('common.viaQrCode')}>
-        <MoneyDonationForm location={location} />
+      <Card badgeTitle={location && t('common.viaQrCode')} mt={8}>
+        {location && (
+          <Text as={'p'} pb={4}>
+            {location?.name} - {location?.street}
+          </Text>
+        )}
+        <Box pb={4}>
+          <MoneyDonationForm location={location} />
+        </Box>
         <Text
           as={'small'}
           display={'block'}
-          pt={4}
           lineHeight={1.2}
           dangerouslySetInnerHTML={{ __html: t('donation.money.feesHint') }}
         />
       </Card>
-    </Stack>
+    </Flex>
   );
 }

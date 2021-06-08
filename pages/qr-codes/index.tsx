@@ -25,7 +25,6 @@ type QrCodeForm = {
 export default function QrCodePage(): JSX.Element {
   const { t } = useTranslation();
 
-  // @TODO Add correct full url
   const getQrCodeValue = (type: DonationType, location?: number) =>
     `${process.env.NEXT_PUBLIC_HOST}/donate/${type}?location=${location}`;
 

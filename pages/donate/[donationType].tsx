@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 
 import { shelter } from '../../data/shelter';
 import MoneyDonation from '../../src/components/Donation/MoneyDonation';
+import Layout from '../../src/components/Theme/Layout';
 import { DonationType } from '../../src/types/Donation';
 
 type DonateWithReasonPageType = {
@@ -21,9 +22,11 @@ export default function DonateWithTypePage({
   );
 
   return (
-    <Container maxW={'7xl'} pb={40}>
-      {type === DonationType.MONEY && <MoneyDonation location={location} />}
-    </Container>
+    <Layout>
+      <Container maxW={'7xl'} py={10}>
+        {type === DonationType.MONEY && <MoneyDonation location={location} />}
+      </Container>
+    </Layout>
   );
 }
 

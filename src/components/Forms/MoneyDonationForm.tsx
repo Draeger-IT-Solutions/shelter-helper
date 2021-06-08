@@ -146,7 +146,7 @@ export default function MoneyDonationForm({
       </HStack>
 
       <Spacer />
-      <Text as={'p'} py={4} textAlign={'center'}>
+      <Text as={'p'} py={2} textAlign={'center'}>
         {t('common.or')}
       </Text>
       <Spacer />
